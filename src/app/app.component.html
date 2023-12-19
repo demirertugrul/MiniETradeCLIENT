@@ -1,0 +1,132 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+      <nav
+        class="navbar navbar-expand-lg navbar-dark shadow-9-strong"
+        style="background: transparent"
+      >
+        <div class="container-fluid">
+          <div class="site-logo">
+            <a class="navbar-brand" href="#" id="laptop" style="color: aqua"
+              >OuroborosGames
+            </a>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-3 mb-lg-0">
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  style="color: aqua"
+                  routerLink="products"
+                  >Products</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">action</a></li>
+                  <li><a class="dropdown-item" href="#">anoother action</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">something else here </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <ul class="navbar-nav mb-9 mb-lg-0">
+            <li class="nav-item"></li>
+          </ul>
+          <ul class="navbar-nav mb-3 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a
+                class="btn btn-outline-primary"
+                type="submit"
+                routerLink="admin"
+                title="panel"
+                ><i class="fa-solid fa-user-pen"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                class="btn btn-outline-primary"
+                aria-current="page"
+                routerLink="basket"
+                ><i class="fa-solid fa-cart-shopping"></i
+              ></a>
+            </li>
+          </ul>
+          <ul class="navbar-nav mb-0 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                style="color: aquamarine"
+                aria-expanded="false"
+              >
+                <i class="fa-solid fa-user"></i>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="dropdown-item btn" routerLink="/profile"
+                    ><i class="fa-solid fa-user" style="font-size: 0.7rem">
+                      <span></span> Ertugrul Demir
+                    </i>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="">
+                    <i class="fas fa-sign-in-alt" style="font-size: 0.7rem"
+                      ><span></span> Log out</i
+                    >
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="col-sm-1"></div>
+  </div>
+  <div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="col-lg-1"></div>
+  </div>
+</div>
+<ngx-spinner
+  name="ballscale"
+  size="large"
+  type="ball-scale-multiple"
+></ngx-spinner>
+<ngx-spinner
+  name="ballcliprotate"
+  size="medium"
+  type="ball-clip-rotate-multiple"
+></ngx-spinner>
+<ngx-spinner
+  name="ballscaleripple"
+  size="default"
+  type="ball-scale-ripple-multiple"
+></ngx-spinner>
+<ngx-spinner name="timer" size="large" type="timer"></ngx-spinner>
