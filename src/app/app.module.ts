@@ -27,7 +27,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
   ],
   providers: [{ provide: 'baseUrl', useValue: 'https://localhost:7001/api' }],
-  // providers: [{ provide: 'baseUrl', useValue: 'https://localhost:7172/api' }], orjinilai bu
   bootstrap: [AppComponent],
 })
 export class AppModule {}

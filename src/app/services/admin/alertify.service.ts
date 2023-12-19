@@ -11,7 +11,6 @@ export class AlertifyService {
   message(message: string, alertifyOptions: Partial<AlertifyOptions>) {
     var msg = alertify[alertifyOptions.messageType](message); // ! alertify.success() yapacagimiza --> js sayesinde alertify["success"] yaparak sinifin indexer ozelligi ile oradaki ney ise onu cagirabiliyoruz.
     if (alertifyOptions.dismissOthers) {
-      // tetiklendiğinde anında o alertify'i dismiss yapıyor
       msg.dismissOthers();
     }
     alertify.set('notifier', 'position', alertifyOptions.messagePosition);

@@ -8,7 +8,6 @@ export class BaseComponent {
     setTimeout(() => {
       this.spinnerHideManuel(spinnerType);
     }, 1000);
-    // ! spinner'i base olarak app.html'e aldigimiz icin setTimeout'u kapatirsak spinner sürekli döner.
   }
 
   spinnerHideManuel(spinnerType: SpinnerType) {

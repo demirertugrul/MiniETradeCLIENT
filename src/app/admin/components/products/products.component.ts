@@ -12,10 +12,9 @@ export class ProductsComponent implements OnInit {
   constructor(private http: HttpClientService) {}
   ngOnInit(): void {}
 
-  @ViewChild(ListComponent) listComponents: ListComponent; //! ÖNEMLİ: Mutlaka type belirt.
+  @ViewChild(ListComponent) listComponents: ListComponent;
 
   createdProduct(productCreate: ProductCreate) {
-    this.listComponents.getProducts(); // yukarda type belirtmediğim için methodu çağıramadım
+    this.listComponents.getProducts();
   }
 }
-// list componentta button tamamen kaplıycak ve urunler list edicek css ile ayarla delete update islemlerini hallet.

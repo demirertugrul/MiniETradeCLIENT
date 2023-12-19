@@ -55,13 +55,12 @@ export class ListComponent extends BaseComponent implements OnInit {
             messageType: AlertifyMessageType.Error,
             dismissOthers: true,
           })
-      ); // parametre'den aldığımız herhangi bir parametreyi özellikle bu parametreler delegate özelliğine sahipse burda oldugu gıbı nullable olmalı.
+      );
     this.dataSource = new MatTableDataSource<ProductList>(
       allProducts.products
     );
     // debugger;
     this.paginator.length = allProducts.totalProductCount;
-    // this.dataSource.paginator = this.paginator
   }
 
   async pageChanged() { 
