@@ -1,30 +1,20 @@
 <div class="center">
-  <ngx-file-drop
-    dropZoneLabel="Drop files here"
-    (onFileDrop)="selectedFile($event)"
-    [accept]="options.accept"
-  >
-    <ng-template
-      ngx-file-drop-content-tmp
-      let-openFileSelector="openFileSelector"
-    >
-      <button type="button" (click)="openFileSelector()">
-        {{ options.explanation }}
-      </button>
+  <ngx-file-drop dropZoneLabel="Drop files here" [accept]="options.accept" (onFileDrop)="selectedFiles($event)">
+    <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+      {{options.explanation}}
+      <button type="button" (click)="openFileSelector()">Seç</button>
     </ng-template>
   </ngx-file-drop>
-  <div *ngIf="files" class="upload-table">
+  <div class="upload-table" *ngIf="files">
     <table class="table">
       <thead>
         <tr>
-          <th>Name</th>
+          <th>Seçilenler</th>
         </tr>
       </thead>
       <tbody class="upload-name-style">
-        <tr *ngFor="let item of files; let i = index">
-          <td>
-            <strong>{{ item.relativePath }}</strong>
-          </td>
+        <tr *ngFor="let item of files; let i=index">
+          <td><strong>{{ item.relativePath }}</strong></td>
         </tr>
       </tbody>
     </table>
