@@ -70,7 +70,7 @@
               ></a>
             </li>
           </ul>
-          <ul class="navbar-nav mb-0 mb-lg-0">
+          <ul *ngIf="a == true;"  (click)="loggedIn()" class="navbar-nav mb-0 mb-lg-0">
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -94,13 +94,20 @@
                 <li>
                   <a class="dropdown-item" href="">
                     <i class="fas fa-sign-in-alt" style="font-size: 0.7rem"
-                      ><span></span> Log out</i
+                      ><span></span>Çıkış Yap</i
                     >
                   </a>
                 </li>
               </ul>
             </li>
           </ul>
+          <ul  *ngIf="a == false;" (click)="loggedIn()"  class="navbar-nav mb-0 mb-lg-0"><li>
+            <a class="dropdown-item" routerLink="/register">
+              <i class="fas fa-sign-in-alt" style="font-size: 0.7rem"
+                ><span></span>Giriş Yap</i
+              >
+            </a>
+          </li></ul>
         </div>
       </nav>
     </div>

@@ -9,9 +9,16 @@ declare var $: any;
 })
 export class AppComponent extends BaseComponent {
   title = 'ETradeParallel';
+  a = false;
   constructor(spinner: NgxSpinnerService) {
     super(spinner);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.a = false;
+  }
+
+  loggedIn(){
+    this.a = true;
+  }
 }
