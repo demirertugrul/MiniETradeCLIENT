@@ -1,9 +1,11 @@
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef } from "@angular/material/dialog";
 
-export class BaseDialog<TDialogComponent> {
-  constructor(public dialogRef: MatDialogRef<TDialogComponent>) {}
+export class BaseDialog<DialogComponent> {
+  constructor(public dialogRef: MatDialogRef<DialogComponent>) {
 
-  close(): void {
+  }
+
+  close() {
     this.dialogRef.close();
   }
 }

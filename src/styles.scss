@@ -1,10 +1,10 @@
-@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 * {
-  font-size: 1.15rem;
-}
-body {
-  background: url("./assets/pic/592236-future-cyberpunk.jpg") no-repeat center
-    fixed;
-  background-size: cover;
-  backdrop-filter: brightness(55%);
-}
+    font-size: 1.15rem;
+  }
+  body {
+    background: url("./assets/pic/592236-future-cyberpunk.jpg") no-repeat center
+      fixed;
+    background-size: cover;
+  }
+  

@@ -1,17 +1,14 @@
 import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FileSystemFileEntry, NgxFileDropEntry } from 'ngx-file-drop';
+import { FileSystemDirectoryEntry, FileSystemFileEntry, NgxFileDropEntry } from 'ngx-file-drop';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { SpinnerType } from '../../../base/base.component';
-import { FileUploadDialogComponent } from '../../../dialogs/file-upload-dialog/file-upload-dialog.component';
-import { AlertifyService } from '../../admin/alertify.service';
+import { FileUploadDialogComponent, FileUploadDialogState } from '../../../dialogs/file-upload-dialog/file-upload-dialog.component';
+import { AlertifyService, MessageType, Position } from '../../admin/alertify.service';
+import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../ui/custom-toastr.service';
+import { DialogService } from '../dialog.service';
 import { HttpClientService } from '../http-client.service';
-import { CustomToastrService } from '../../ui/toastr-custom.service';
-import { DialogServiceService } from '../dialog-service.service';
-import { FileUploadDialogState } from 'src/app/contracts/file-upload-options';
-import { AlertifyMessagePosition, AlertifyMessageType } from 'src/app/contracts/serviceOptions/alertify';
-import { ToastrMessagePosition, ToastrMessageType } from 'src/app/contracts/serviceOptions/toastr';
 
 @Component({
   selector: 'app-file-upload',
@@ -24,7 +21,7 @@ export class FileUploadComponent {
     private alertifyService: AlertifyService,
     private customToastrService: CustomToastrService,
     private dialog: MatDialog,
-    private dialogService: DialogServiceService,
+    private dialogService: DialogService,
     private spinner: NgxSpinnerService) { }
 
   public files: NgxFileDropEntry[];
@@ -47,7 +44,7 @@ export class FileUploadComponent {
         this.httpClientService.post({
           controller: this.options.controller,
           action: this.options.action,
-          querySTring: this.options.queryString,
+          queryString: this.options.queryString,
           headers: new HttpHeaders({ "responseType": "blob" })
         }, fileData).subscribe(data => {
 
@@ -58,13 +55,13 @@ export class FileUploadComponent {
             this.alertifyService.message(message,
               {
                 dismissOthers: true,
-                messageType: AlertifyMessageType.Success,
-                messagePosition: AlertifyMessagePosition.TopRight
+                messageType: MessageType.Success,
+                position: Position.TopRight
               })
           } else {
             this.customToastrService.message(message, "Başarılı.", {
               messageType: ToastrMessageType.Success,
-              messagePosition: ToastrMessagePosition.TopRight
+              position: ToastrPosition.TopRight
             })
           }
 
@@ -78,13 +75,13 @@ export class FileUploadComponent {
             this.alertifyService.message(message,
               {
                 dismissOthers: true,
-                messageType: AlertifyMessageType.Error,
-                messagePosition: AlertifyMessagePosition.TopRight
+                messageType: MessageType.Error,
+                position: Position.TopRight
               })
           } else {
             this.customToastrService.message(message, "Başarsız.", {
               messageType: ToastrMessageType.Error,
-              messagePosition: ToastrMessagePosition.TopRight
+              position: ToastrPosition.TopRight
             })
           }
 

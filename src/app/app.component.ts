@@ -1,24 +1,38 @@
-import { Component } from '@angular/core';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { BaseComponent } from './base/base.component';
-declare var $: any;
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { DynamicLoadComponentDirective } from './directives/common/dynamic-load-component.directive';
+import { AuthService } from './services/common/auth.service';
+import { ComponentType, DynamicLoadComponentService } from './services/common/dynamic-load-component.service';
+import { CustomToastrService, ToastrMessageType, ToastrPosition } from './services/ui/custom-toastr.service';
+import * as bootstrap from 'bootstrap'
+
+declare var $: any
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent extends BaseComponent {
-  title = 'ETradeParallel';
-  a = false;
-  constructor(spinner: NgxSpinnerService) {
-    super(spinner);
+export class AppComponent {
+  @ViewChild(DynamicLoadComponentDirective, { static: true })
+  dynamicLoadComponentDirective: DynamicLoadComponentDirective;
+
+  constructor(public authService: AuthService, private toastrService: CustomToastrService, private router: Router, private dynamicLoadComponentService: DynamicLoadComponentService) {
+    authService.identityCheck();
   }
 
-  ngOnInit(): void {
-    this.a = false;
+  signOut() {
+    localStorage.removeItem("accessToken");
+    this.authService.identityCheck();
+    this.router.navigate([""]);
+    this.toastrService.message("Oturum kapatılmıştır!", "Oturum Kapatıldı", {
+      messageType: ToastrMessageType.Warning,
+      position: ToastrPosition.TopRight
+    });
   }
 
-  loggedIn(){
-    this.a = true;
+  loadComponent() {
+    this.dynamicLoadComponentService.loadComponent(ComponentType.BasketsComponent, this.dynamicLoadComponentDirective.viewContainerRef);
   }
 }

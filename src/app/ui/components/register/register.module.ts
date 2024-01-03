@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './register.component';
 import { RouterModule } from '@angular/router';
-import { BasketComponent } from '../basket/basket.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -13,12 +13,9 @@ import { BasketComponent } from '../basket/basket.component';
   imports: [
     CommonModule,
     RouterModule.forChild([
-      {
-        path: '',
-        component: RegisterComponent,
-      },
+      { path: "", component: RegisterComponent }
     ]),
-  ],
-  
+    ReactiveFormsModule
+  ]
 })
 export class RegisterModule { }

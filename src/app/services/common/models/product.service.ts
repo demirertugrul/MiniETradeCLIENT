@@ -1,10 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom, Observable } from 'rxjs';
+import { Create_Product } from '../../../contracts/create_product';
+import { List_Product } from '../../../contracts/list_product';
 import { List_Product_Image } from '../../../contracts/list_product_image';
 import { HttpClientService } from '../http-client.service';
-import { Create_Product } from 'src/app/contracts/create_product';
-import { List_Product } from 'src/app/contracts/list_product';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +33,7 @@ export class ProductService {
   async read(page: number = 0, size: number = 5, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<{ totalProductCount: number; products: List_Product[] }> {
     const promiseData: Promise<{ totalProductCount: number; products: List_Product[] }> = this.httpClientService.get<{ totalProductCount: number; products: List_Product[] }>({
       controller: "products",
-      querySTring: `page=${page}&size=${size}`
+      queryString: `page=${page}&size=${size}`
     }).toPromise();
 
     promiseData.then(d => successCallBack())
@@ -65,9 +65,8 @@ export class ProductService {
     const deleteObservable = this.httpClientService.delete({
       action: "deleteproductimage",
       controller: "products",
-      querySTring: `imageId=${imageId}`
+      queryString: `imageId=${imageId}`
     }, id)
-    // debugger;
     await firstValueFrom(deleteObservable);
     successCallBack();
   }
@@ -76,7 +75,7 @@ export class ProductService {
     const changeShowcaseImageObservable = this.httpClientService.get({
       controller: "products",
       action: "ChangeShowcaseImage",
-      querySTring: `imageId=${imageId}&productId=${productId}`
+      queryString: `imageId=${imageId}&productId=${productId}`
     });
     await firstValueFrom(changeShowcaseImageObservable);
     successCallBack();
